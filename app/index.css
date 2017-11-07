@@ -20,6 +20,7 @@ html {
 body {
     padding: 0;
     margin: 0;
+    position: relative;
 }
 
 h3 {
@@ -39,6 +40,7 @@ h3 {
 .interactive-blocks-container {
     width: 100%;
     overflow: hidden;
+    /*position: relative;*/
 }
 
 .interactive-item {
@@ -48,7 +50,8 @@ h3 {
     vertical-align: top;
     margin-right: -5px;
     position: relative;
-    z-index: 10;
+    transition: .4s;
+    /*z-index: 10;*/
 }
 
 .interactive-item h3 {
@@ -60,7 +63,7 @@ h3 {
     padding-right: 38px;
     font-size: 34px;
     text-transform: uppercase;
-    transition: .35s;
+    transition: .4s;
 }
 
 .interactive-item .read-more {
@@ -75,14 +78,15 @@ h3 {
     text-align: center;
     left: 37px;
     font-size: 26px;
-    transition: .35s;
+    transition: .4s;
+    cursor: pointer;
 }
 
 .interactive-item-container {
     width: 100%;
     height: 781px;
     position: relative;
-    transition: .35s;
+    transition: .4s;
 }
 
 .interactive-item-container p {
@@ -95,7 +99,7 @@ h3 {
     opacity: 0;
     position: relative;
     top: 50px;
-    transition: .35s;
+    transition: .4s;
 }
 
 .interactive-item.family-life .interactive-item-container {
@@ -121,7 +125,7 @@ h3 {
 .interactive-item-content {
     position: absolute;
     bottom: -25px;
-    transition: .35s;
+    transition: .4s;
 }
 
 .hidden {
@@ -140,33 +144,94 @@ h3 {
 .itemExpanded {
     width: 110%;
     transform: translateX(-18px);
-    transition: .35s;
+    transition: .4s;
     z-index: 100;
 }
 
 .itemExpanded .interactive-item-content {
     bottom: 60px;
     transform: translateX(17px);
-    transition: .35s;
+    transition: .4s;
 }
 
 .itemExpanded .read-more {
     transform: translateX(17px);
-    transition: .35s;
+    transition: .4s;
 }
 
 
 .itemExpanded p:first-of-type {
     top: 0;
     opacity: 1;
-    transition: top .35s, opacity .8s;
+    transition: top .4s, opacity .8s;
     transition-delay: .2s;
 }
 
-/*.itemExpanded .interactive-item-content {*/
-    /*!*transform: translateX(10px);*!*/
-    /*bottom: 60px;*/
-    /*opacity: 1;*/
-    /*transition: bottom .35s, opacity .8s;*/
-    /*!*transition-delay: .2s;*!*/
+.itemActive {
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    padding: 0 150%;
+    left: 0;
+    transition: .4s;
+}
+
+/*.itemActive::after {*/
+    /*content: '×';*/
+    /*width: 30px;*/
+    /*height: 30px;*/
+    /*position: absolute;*/
+    /*color: red;*/
+    /*right: 30px;*/
+    /*top: 14px;*/
+    /*z-index: 200;*/
+    /*font-size: 45px;*/
 /*}*/
+
+.entertaining.itemActiveContainer {
+    transform: translateX(-300%);
+    transition: .4s;
+}
+
+.cooking.itemActiveContainer {
+     transform: translateX(-200%);
+     transition: .4s;
+}
+
+.friendly-home.itemActiveContainer {
+    transform: translateX(-100%);
+    transition: .4s;
+}
+
+.close {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    right: 25px;
+    top: 20px;
+    cursor: pointer;
+    margin-left: 244%;
+}
+
+.close::before,
+.close::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    right: 0;
+    margin-top: -1px;
+    background: #000;
+    z-index: 200;
+}
+
+.close::before {
+    transform: rotate(45deg);
+}
+
+.close::after {
+    transform: rotate(-45deg);
+}
