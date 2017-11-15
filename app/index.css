@@ -33,13 +33,15 @@ h3 {
     width: 100%;
     height: 100%;
     background: #000;
-    opacity: .4;
+    opacity: .3;
     position: absolute;
 }
 
 .interactive-blocks-container {
     width: 100%;
     overflow: hidden;
+    padding: 0;
+    transition: .5s;
     /*position: relative;*/
 }
 
@@ -50,23 +52,22 @@ h3 {
     vertical-align: top;
     margin-right: -5px;
     position: relative;
-    transition: .4s;
+    transition: .5s;
     /*z-index: 10;*/
 }
 
 .interactive-item h3 {
     color: #fff;
-    /*position: absolute;*/
-    bottom: 102px;
-    /*min-height: 83px;*/
+    position: absolute;
+    bottom: 135px;
     padding-left: 38px;
     padding-right: 38px;
     font-size: 34px;
     text-transform: uppercase;
-    transition: .4s;
+    transition: .5s;
 }
 
-.interactive-item .read-more {
+.read-more {
     display: block;
     width: 28px;
     height: 28px;
@@ -78,15 +79,36 @@ h3 {
     text-align: center;
     left: 37px;
     font-size: 26px;
-    transition: .4s;
+    transition: .5s;
     cursor: pointer;
 }
 
 .interactive-item-container {
     width: 100%;
     height: 781px;
-    position: relative;
-    transition: .4s;
+    position: absolute;
+    padding: 0%;
+    transition: .7s;
+}
+
+/*.family-life .interactive-item-container {*/
+    /*transition: .6s;*/
+/*}*/
+
+/*.friendly-home .interactive-item-container {*/
+    /*transition: .8s;*/
+/*}*/
+
+/*.cooking .interactive-item-container {*/
+    /*transition: .6s;*/
+/*}*/
+
+.itemActive {
+    position: absolute;
+    z-index: 100;
+    padding: 0 150%;
+    left: 0;
+    transition: .5s;
 }
 
 .interactive-item-container p {
@@ -98,8 +120,9 @@ h3 {
 .interactive-item-container p:first-of-type {
     opacity: 0;
     position: relative;
-    top: 50px;
-    transition: .4s;
+    /*top: 50px;*/
+    transform: translateY(50px);
+    transition: .5s;
 }
 
 .interactive-item.family-life .interactive-item-container {
@@ -124,8 +147,9 @@ h3 {
 
 .interactive-item-content {
     position: absolute;
+    max-width: 410px;
     bottom: -25px;
-    transition: .4s;
+    transition: .5s;
 }
 
 .hidden {
@@ -133,86 +157,168 @@ h3 {
     height: 1px;
     overflow: hidden;
     opacity: 0;
-    /*position: absolute;*/
-    /*left: -10000px;*/
-}
-
-.zindexDecrease {
-    z-index: -1;
 }
 
 .itemExpanded {
     width: 110%;
     transform: translateX(-18px);
-    transition: .4s;
+    transition: .5s;
     z-index: 100;
 }
 
 .itemExpanded .interactive-item-content {
-    bottom: 60px;
-    transform: translateX(17px);
-    transition: .4s;
+    transform: translate(17px, -60px);
+    transition: .5s;
 }
 
 .itemExpanded .read-more {
     transform: translateX(17px);
-    transition: .4s;
+    transition: .5s;
 }
 
-
 .itemExpanded p:first-of-type {
-    top: 0;
+    top: -30px;
     opacity: 1;
-    transition: top .4s, opacity .8s;
+    transform: translateY(-17px);
+    /*transition: top .5s, opacity .8s;*/
+    transition: transform .5s, opacity .8s;
+    /*transition: .8s;*/
     transition-delay: .2s;
 }
 
-.itemActive {
-    position: absolute;
-    width: 100%;
-    z-index: 100;
-    padding: 0 150%;
-    left: 0;
-    transition: .4s;
+.itemActiveContainer {
+    z-index: 1000;
 }
-
-/*.itemActive::after {*/
-    /*content: '×';*/
-    /*width: 30px;*/
-    /*height: 30px;*/
-    /*position: absolute;*/
-    /*color: red;*/
-    /*right: 30px;*/
-    /*top: 14px;*/
-    /*z-index: 200;*/
-    /*font-size: 45px;*/
-/*}*/
 
 .entertaining.itemActiveContainer {
     transform: translateX(-300%);
-    transition: .4s;
+    transition: .5s;
 }
 
 .cooking.itemActiveContainer {
      transform: translateX(-200%);
-     transition: .4s;
+     transition: .5s;
 }
 
 .friendly-home.itemActiveContainer {
     transform: translateX(-100%);
+    transition: .5s;
+}
+
+/*.afterTab.itemActiveContainer {*/
+    /*transform: translateX(0);*/
+    /*right: 0;*/
+    /*z-index: 5000;*/
+/*}*/
+
+.itemActiveContainer .interactive-item-content {
+    opacity: 0;
+    transition: opacity .4s;
+}
+
+.itemActiveContainer .interactive-item-content {
+    transform: translate(17px, -60px);
+    left: 0;
     transition: .4s;
 }
 
+.itemActiveContainer .interactive-item-content p:first-of-type {
+    transform: translateY(-17px);
+}
+
+.itemActiveContainer .interactive-item-content h3 {
+    bottom: 135px;
+}
+
+.itemActiveContainer .read-more {
+    opacity: 0;
+    z-index: -100;
+    transition: opacity .4s;
+}
+
+.itemActiveContainer.family-life .read-more {
+    transition: .4s;
+    transform: translateX(10px)
+}
+
+.itemActiveContainer.friendly-home .interactive-item-content {
+    transition: .4s;
+    transform: translate(345px, -60px);
+}
+
+.itemActiveContainer.friendly-home .read-more {
+    transition: .4s;
+    transform: translateX(345px)
+}
+
+.itemActiveContainer.cooking .interactive-item-content {
+    transition: .3s;
+    transform: translate(505px, -60px);
+}
+
+.itemActiveContainer.cooking  .read-more {
+    transition: .4s;
+    transform: translateX(505px)
+}
+
+.itemActiveContainer.entertaining .interactive-item-content {
+    transition: .3s;
+    transform: translate(750px, -60px);
+}
+
+.itemActiveContainer.entertaining .read-more {
+    transition: .3s;
+    transform: translateX(750px)
+}
+
+.active-item-content {
+    position: absolute;
+    bottom: 30px;
+    left: 165px;
+    width: 100%;
+}
+
+.active-item-content p {
+    color: #fff;
+    font-size: 16px;
+    line-height: 23px;
+}
+
+.active-item-content a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+
+.active-item-content a::before {
+    content: '🡺';
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    margin-right: 14px;
+}
+
+.active-item-content a:hover {
+    text-decoration: underline;
+}
+
 .close {
-    position: relative;
+    /*position: relative;*/
+    position: absolute;
     display: inline-block;
     width: 30px;
     height: 30px;
     overflow: hidden;
-    right: 25px;
-    top: 20px;
+    /*right: 25px;*/
+    /*top: 20px;*/
     cursor: pointer;
     margin-left: 244%;
+    /*opacity: 0;*/
+    top: 35px;
+    right: 220px;
 }
 
 .close::before,
@@ -234,4 +340,84 @@ h3 {
 
 .close::after {
     transform: rotate(-45deg);
+}
+
+.itemActive .close {
+    opacity: 1;
+    transition: .4s;
+    transition-delay: .5s;
+}
+
+.navigation-panel {
+    position: absolute;
+    top: 0;
+    z-index: -2;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0;
+    /*transition: opacity .3s;*/
+}
+
+.navigation-panel.activateNavigationPanel {
+    opacity: 1;
+    transition: opacity .4s;
+    transition-delay: .6s;
+}
+
+.navigation-panel-item {
+    width: 100px;
+    height: 780px;
+    background: rgba(0, 0, 0, 0.34);
+    color: #fff;
+    display: inline-block;
+    margin-right: -5px;
+    border-left: 1px solid rgba(255, 255, 255, 0.24);
+    border-right: 1px solid rgba(255, 255, 255, 0.24);
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.navigation-panel-item.hideActiveTab {
+    display: none;
+}
+
+.navigation-panel-item > span {
+    transform: rotate(90deg);
+    display: block;
+    position: relative;
+    top: 260px;
+    left: -334px;
+    font-size: 30px;
+    width: 760px;
+    text-transform: uppercase;
+    text-align: right;
+}
+
+.navigation-panel-item.left-1 {
+    position: absolute;
+    right: 0;
+
+}
+
+.navigation-panel-item.left-2 {
+    position: absolute;
+    right: 101px;
+}
+
+.navigation-panel-item .read-more {
+    bottom: 1px;
+    left: initial;
+    right: -70px;
+}
+
+.zindexDecrease {
+    z-index: -1;
+}
+
+.zindexIncrease {
+    z-index: 3000;
+}
+
+.tabIndexTop {
+    z-index: 4000;
 }
