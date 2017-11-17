@@ -410,6 +410,12 @@ h3 {
     right: -70px;
 }
 
+.active-item-content h3 {
+    font-size: 40px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
 .zindexDecrease {
     z-index: -1;
 }
